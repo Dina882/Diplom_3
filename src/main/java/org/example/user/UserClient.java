@@ -1,6 +1,7 @@
-package org.example;
+package org.example.user;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
+import org.example.Client;
 
 public class UserClient extends Client {
     public static final String ROOT_LOGIN = "/auth/login";

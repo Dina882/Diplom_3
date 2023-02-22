@@ -1,7 +1,5 @@
-package org.example;
-
+package org.example.user;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.example.User;
 
 public class UserGenerator {
 

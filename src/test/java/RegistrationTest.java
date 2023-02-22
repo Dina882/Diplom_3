@@ -1,11 +1,12 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import org.example.LoginPage;
-import org.example.RegisterPage;
-import org.example.User;
-import org.example.UserClient;
-import org.example.UserGenerator;
+import org.example.pom.LoginPage;
+import org.example.pom.RegisterPage;
+import org.example.user.User;
+import org.example.user.UserClient;
+import org.example.user.UserGenerator;
 
 public class RegistrationTest extends BaseTest {
     private User user;
@@ -15,6 +16,7 @@ public class RegistrationTest extends BaseTest {
 
     //Успешнаю регистрацию.
     @Test
+    @DisplayName("Успешнаю регистрацию.")
     public void validRegistration() {
         user = userGenerator.random();
         RegisterPage registerPage = new RegisterPage(driver);
@@ -27,6 +29,7 @@ public class RegistrationTest extends BaseTest {
     }
     //Ошибка для некорректного пароля.
     @Test
+    @DisplayName("Ошибка для некорректного пароля.")
     public void registrationWithIncorrectPwdErrHndl() {
         user = userGenerator.randomBadPwd();
         RegisterPage registerPage = new RegisterPage(driver);

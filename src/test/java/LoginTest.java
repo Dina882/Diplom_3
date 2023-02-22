@@ -1,14 +1,15 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.example.PasswordPage;
-import org.example.LoginPage;
-import org.example.MainPage;
-import org.example.RegisterPage;
-import org.example.User;
-import org.example.UserClient;
-import org.example.UserGenerator;
+import org.example.pom.PasswordPage;
+import org.example.pom.LoginPage;
+import org.example.pom.MainPage;
+import org.example.pom.RegisterPage;
+import org.example.user.User;
+import org.example.user.UserClient;
+import org.example.user.UserGenerator;
 
 public class LoginTest extends BaseTest {
     private User user;
@@ -17,6 +18,7 @@ public class LoginTest extends BaseTest {
     private String accessToken;
     //Регистрация аккаунта
     @Before
+    @DisplayName("Регистрация аккаунта")
     public void accountTestRegistration() {
         user = userGenerator.random();
         RegisterPage registerPage = new RegisterPage(driver);
@@ -25,6 +27,7 @@ public class LoginTest extends BaseTest {
     }
     //вход по кнопке «Войти в аккаунт» на главной
     @Test
+    @DisplayName("Вход в приложение по кнопке «Войти в аккаунт» на главной странице")
     public void loginFromMainPage() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
@@ -37,6 +40,7 @@ public class LoginTest extends BaseTest {
     }
     // вход через кнопку «Личный кабинет»
     @Test
+    @DisplayName("вход через кнопку «Личный кабинет»")
     public void loginFromPersonalArea() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
@@ -49,6 +53,7 @@ public class LoginTest extends BaseTest {
     }
     //вход через кнопку в форме регистрации
     @Test
+    @DisplayName("Dход через кнопку в форме регистрации")
     public void loginFromRegistrationPage() {
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.open();
@@ -62,6 +67,7 @@ public class LoginTest extends BaseTest {
     }
     //вход через кнопку в форме восстановления пароля.
     @Test
+    @DisplayName("Dход через кнопку в форме восстановления пароля.")
     public void loginFromForgotPwdPage() {
         PasswordPage forgotPwdPage = new PasswordPage(driver);
         forgotPwdPage.open();

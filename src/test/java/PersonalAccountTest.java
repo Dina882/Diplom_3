@@ -1,14 +1,15 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.example.ProfilePage;
-import org.example.LoginPage;
-import org.example.MainPage;
-import org.example.RegisterPage;
-import org.example.User;
-import org.example.UserClient;
-import org.example.UserGenerator;
+import org.example.pom.ProfilePage;
+import org.example.pom.LoginPage;
+import org.example.pom.MainPage;
+import org.example.pom.RegisterPage;
+import org.example.user.User;
+import org.example.user.UserClient;
+import org.example.user.UserGenerator;
 
 public class PersonalAccountTest extends BaseTest {
     private User user;
@@ -25,6 +26,7 @@ public class PersonalAccountTest extends BaseTest {
     }
     //переход по клику на «Личный кабинет». Пользователь не залогинен.
     @Test
+    @DisplayName("переход по клику на «Личный кабинет». Пользователь не залогинен.")
     public void personalAreaNotLoggedInFromMainPage() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
@@ -36,6 +38,7 @@ public class PersonalAccountTest extends BaseTest {
     }
     //переход по клику на «Личный кабинет». Пользователь залогинен.
     @Test
+    @DisplayName("Переход по клику на «Личный кабинет». Пользователь залогинен.")
     public void personalAreaLoggedInFromMainPage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();

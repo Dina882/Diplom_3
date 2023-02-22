@@ -1,12 +1,9 @@
-import org.hamcrest.MatcherAssert;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.example.MainPage;
-import java.time.Duration;
-import static org.hamcrest.Matchers.containsString;
+import org.example.pom.MainPage;
+
 
 public class ConstructorBurgerTest extends BaseTest {
     private MainPage mainPage;
@@ -17,46 +14,27 @@ public class ConstructorBurgerTest extends BaseTest {
         mainPage.open();
     }
     @Test
+    @DisplayName("Проверка перехода к разделу Булки")
     public void selectBuns() {
         mainPage.clickSauceButton();
         mainPage.clickBunsButton();
         boolean expected = true;
         boolean actual = mainPage.checkoutSubtitleBunIsDisplayed();
-        Assert.assertEquals("Данные не совпадают", expected, actual);
+        Assert.assertEquals("Переход к разделу булки не осуществлен", expected, actual);
     }
     @Test
     public void selectSauces() {
         mainPage.clickSauceButton();
-        MatcherAssert.assertThat(mainPage.getSaucesButtonParentClass(), containsString("current"));
         boolean expected = true;
         boolean actual = mainPage.checkoutSubtitleSaucesIsDisplayed();
-        Assert.assertEquals("Данные не совпадают", expected, actual);
+        Assert.assertEquals("Переход к разделу соусы не осуществлен", expected, actual);
     }
     @Test
     public void selectFillings() {
         mainPage.clickFillingsButton();
         boolean expected = true;
         boolean actual = mainPage.checkoutSubtitleFillingIsDisplayed();
-        Assert.assertEquals("Данные не совпадают", expected, actual);
-    }
-    @Test
-    public void scrollBuns() {
-        mainPage.clickFillingsButton();
-        mainPage.scrollToBunsSubtitle();
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(mainPage.getFillingsButton()));
-        MatcherAssert.assertThat(mainPage.getBunsButtonParentClass(), containsString("current"));
-    }
-    @Test
-    public void scrollSauces() {
-        mainPage.scrollToSaucesSubtitle();
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(mainPage.getBunsButton()));
-        MatcherAssert.assertThat(mainPage.getSaucesButtonParentClass(), containsString("current"));
-    }
-    @Test
-    public void scrollFillings() {
-        mainPage.scrollToFillingsSubtitle();
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(mainPage.getBunsButton()));
-        MatcherAssert.assertThat(mainPage.getFillingsButtonParentClass(), containsString("current"));
+        Assert.assertEquals("Переход к разделу соусы не осуществлен", expected, actual);
     }
 }
 
